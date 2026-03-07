@@ -1,5 +1,6 @@
 import './LandingPage.css';
 import homeBG from './assets/HomeBackground.jpg';
+import resumePFP from './assets/ResumePFP.jpg';
 import { useState, useEffect } from 'react';
 
 function LandingPage() {
@@ -92,15 +93,70 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section
-        id="about"
-        className="section about-section"
-      >
-        <div className="about-section__inner">
-          <h2>About</h2>
+{/* About Section */}
+<section
+  id="about"
+  className="section about-section"
+>
+  <div className="about-section__inner">
+
+    {/* Section Title */}
+    <h2 className="about-title">ABOUT MYSELF</h2>
+
+    {/* Avatar */}
+    <img
+      src={resumePFP}
+      alt="Christopher Cooper portrait"
+      className="about-avatar"
+    />
+
+    {/* Description text box */}
+    <div className="about-description">
+      <p>
+        I'm a Computer Science student at the University of Central Florida focused on building practical software that bridges web, mobile, 
+        and AI-driven experiences. I've developed full-stack applications ranging from inventory
+        and recipe generations platforms to sports analytics tools, while also having experience in leading teams through project management. 
+        My interests include scalable systems, product-focused engineering, and creating software that turns everyday problems into intuitive digital solutions.
+      </p>
+    </div>
+
+    {/* Two-column section */}
+    <div className="about-columns">
+
+      {/* Skills Box */}
+      <div className="about-box">
+        <h3>Languages</h3>
+        <ul>
+          <li>JavaScript / Typescript</li>
+          <li>React / React Native</li>
+          <li>Java</li>
+          <li>C / C++</li>
+          <li>Python</li>
+          <li>HTML</li>
+        </ul>
+      </div>
+
+      {/* Personal Info Box */}
+      <div className="about-box">
+        <h3>Personal Info</h3>
+        <ul>
+          <li>
+            <span className="info-label">Name:</span> Christopher Cooper
+          </li>
+          <li>
+            <span className="info-label">Location:</span> Orlando, FL
+          </li>
+          <li>
+            <span className="info-label">Email:</span> CCoop0531@gmail.com
+          </li>
+          <li>
+            <span className="info-label">Education:</span> University of Central Florida — B.S. Computer Science
+          </li>
+        </ul>
         </div>
-      </section>
+    </div>
+  </div>
+</section>
 
       {/* Resume Section */}
       <section 
