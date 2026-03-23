@@ -20,6 +20,7 @@ function LandingPage() {
       title: 'Smart Stock',
       image: smartStockImg,
       modalImage: smartStockExampleImg,
+      tags: ['React', 'Node.js', 'OCR', 'AI', 'Inventory Systems'],
       description:
         'Smart Stock is a full-stack inventory management system that automates item tracking using barcode and receipt scanning with OCR to extract product data and expiration dates. It maintains a structured inventory with real-time updates, categorization, and expiration monitoring. An AI-powered recipe generator suggests meals based on available ingredients. The project emphasizes efficient state management, clean data flow, and a responsive UI for seamless user interaction.'
     },
@@ -27,6 +28,7 @@ function LandingPage() {
       title: 'Trade Wizard',
       image: tradeWizardImg,
       modalImage: tradeWizardImg,
+      tags: ['React', 'API', 'Data Analysis', 'Sports Analytics'],
       description:
         'Trade Wizard is a fantasy football trade analyzer that evaluates proposed trades and assigns a grade to each side based on player value and projected performance. It processes player data, compares positional impact, and generates balanced trade insights using structured scoring logic. The system focuses on clean data handling, efficient computation, and intuitive UI feedback, allowing users to quickly assess trade fairness and make more informed decisions.'
     },
@@ -34,6 +36,7 @@ function LandingPage() {
       title: 'Vault Runner',
       image: vaultRunnerImg,
       modalImage: vaultRunnerExampleImg,
+      tags: ['Unity', 'C#', 'Game Physics', 'AI NPCs'],
       description:
         'Vault Runner is a 2D platformer built in Unity featuring multiple levels where players use tools and movement mechanics to overcome obstacles and collect gems. The project includes physics-based interactions, collision systems, and responsive input handling. It also incorporates AI-driven NPC behavior for dynamic interactions within levels. Emphasis was placed on level design, gameplay systems, and maintaining smooth performance across scenes.'
     },
@@ -41,6 +44,7 @@ function LandingPage() {
       title: 'White Elephant',
       image: whiteElephantImg,
       modalImage: whiteElephantImg,
+      tags: ['React', 'State Management', 'Game Logic', 'UI Systems'],
       description:
         'White Elephant is a web application that simulates a digital gift exchange with automated participant management and real-time game state tracking. It includes hidden gift logic, controlled reveal mechanics, and a structured steal system to replicate real gameplay rules. A visualization layer displays participants and available gifts, ensuring clarity and engagement while emphasizing state synchronization and interactive UI design.'
     }
@@ -307,6 +311,13 @@ function LandingPage() {
                     className="project-card__image"
                   />
                 </button>
+                <div className="project-card__tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="project-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -319,7 +330,46 @@ function LandingPage() {
         className="section contact-section"
       >
         <div className="contact-section__inner">
-          <h2>Contact</h2>
+
+          <h2 className="contact-title">LET’S CONNECT</h2>
+
+          {/* Resume Button */}
+          <a
+            href="/ChristopherCooperResume.pdf"
+            download
+            className="resume-button"
+          >
+            Download Resume
+          </a>
+
+          {/* Social Icons */}
+          <div className="contact-socials">
+            <a
+              href="https://www.linkedin.com/in/christopherbradleycooper"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-socials__link"
+            >
+              <FaLinkedin />
+            </a>
+
+            <a
+              href="https://github.com/Chris-B-Cooper"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-socials__link"
+            >
+              <FaGithub />
+            </a>
+
+            <button
+              onClick={handleCopyEmail}
+              className="contact-socials__link"
+            >
+              <FaEnvelope />
+            </button>
+          </div>
+          {copied && <div className="copy-popup contact-popup">Email Copied!</div>}
         </div>
       </section>
 
