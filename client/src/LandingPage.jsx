@@ -1,12 +1,50 @@
 import './LandingPage.css';
 import homeBG from './assets/HomeBackground.jpg';
 import resumePFP from './assets/ResumePFP.jpg';
+import smartStockImg from './assets/SmartStock.png';
+import smartStockExampleImg from './assets/SmartStockExample.png';
+import tradeWizardImg from './assets/TradeWizard.png';
+import vaultRunnerImg from './assets/VaultRunner.png';
+import vaultRunnerExampleImg from './assets/VaultRunnerExample.png';
+import whiteElephantImg from './assets/WhiteElephant.png';
 import { useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaTimes } from 'react-icons/fa';
 
 function LandingPage() {
   const [activeSection, setActiveSection] = useState("home");
   const [copied, setCopied] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const projects = [
+    {
+      title: 'Smart Stock',
+      image: smartStockImg,
+      modalImage: smartStockExampleImg,
+      description:
+        'A full-stack inventory management application built to streamline product tracking, stock visibility, and organization across items and categories. It focuses on clean data flow, responsive UI design, and practical CRUD workflows that make inventory updates fast and intuitive.'
+    },
+    {
+      title: 'Trade Wizard',
+      image: tradeWizardImg,
+      modalImage: tradeWizardImg,
+      description:
+        'A data-driven stock analytics application designed to surface market insights through clean visualizations and structured financial data. Built with a focus on usability and performance, it helps users explore trends, compare metrics, and interact with market data in a more accessible way.'
+    },
+    {
+      title: 'Vault Runner',
+      image: vaultRunnerImg,
+      modalImage: vaultRunnerExampleImg,
+      description:
+        'A 2D platformer developed in Unity where players navigate multiple levels, use different tools to overcome obstacles, and collect gems for score. The project focused on gameplay systems, level flow, player interaction mechanics, and building a smooth moment-to-moment experience.'
+    },
+    {
+      title: 'White Elephant',
+      image: whiteElephantImg,
+      modalImage: whiteElephantImg,
+      description:
+        'A web application built to automate and visualize the flow of a White Elephant gift exchange. It handles participant generation, tracks gift ownership, keeps unrevealed presents hidden, and supports a steal system to make the experience feel closer to the real game while keeping everything organized.'
+    }
+  ];
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('section'));
@@ -38,6 +76,26 @@ function LandingPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedProject(null);
+      }
+    };
+
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleEscape);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [selectedProject]);
+
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText("CCoop0531@gmail.com");
@@ -51,12 +109,19 @@ function LandingPage() {
     }
   };
 
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+  };
+
+  const closeProjectModal = () => {
+    setSelectedProject(null);
+  };
+
   return (
     <div className="page">
       {/* Sticky Header */}
       <header className="site-header">
         <div className="site-header__inner">
-          {/* Navigation */}
           <nav className="site-header__nav">
             <a
               href="#home"
@@ -141,27 +206,21 @@ function LandingPage() {
       >
         <div className="about-section__inner">
 
-          {/* Section Title */}
           <h2 className="about-title">ABOUT MYSELF</h2>
 
-          {/* Avatar */}
           <img
             src={resumePFP}
             alt="Christopher Cooper portrait"
             className="about-avatar"
           />
 
-          {/* Description text box */}
           <div className="about-description">
             <p>
               I’m a Computer Science student at the University of Central Florida focused on building scalable, high-performance software that bridges web, mobile, and AI-driven experiences. I’ve developed full-stack applications ranging from inventory and recipe generation platforms to data-driven sports analytics tools, while leading teams using Agile methodologies, sprint planning, and project management best practices. I also have hands-on experience with cloud computing through AWS, working with services such as EC2, S3, IAM, and CloudWatch, with a focus on cloud architecture, infrastructure provisioning, monitoring, and security best practices. My interests include distributed systems, cloud-native development, and building reliable, user-centric applications that transform real-world problems into efficient, production-ready digital solutions.
             </p>
           </div>
 
-          {/* Two-column section */}
           <div className="about-columns">
-
-            {/* Skills Box */}
             <div className="about-box">
               <h3>Languages</h3>
               <ul>
@@ -174,7 +233,6 @@ function LandingPage() {
               </ul>
             </div>
 
-            {/* Personal Info Box */}
             <div className="about-box">
               <h3>Personal Info</h3>
               <ul>
@@ -194,7 +252,6 @@ function LandingPage() {
             </div>
           </div>
 
-          {/* Work Experience Box */}
           <div className="about-work-experience">
             <h3>Work Experience</h3>
 
@@ -231,7 +288,28 @@ function LandingPage() {
         className="section projects-section"
       >
         <div className="projects-section__inner">
-          <h2>Projects</h2>
+          <h2 className="projects-title">MY PROJECTS</h2>
+
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <div className="project-card" key={project.title}>
+                <h3 className="project-card__title">{project.title}</h3>
+
+                <button
+                  type="button"
+                  className="project-card__image-button"
+                  onClick={() => openProjectModal(project)}
+                  aria-label={`Open ${project.title} project details`}
+                >
+                  <img
+                    src={project.image}
+                    alt={`${project.title} project preview`}
+                    className="project-card__image"
+                  />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -244,6 +322,49 @@ function LandingPage() {
           <h2>Contact</h2>
         </div>
       </section>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <div
+          className="project-modal-overlay"
+          onClick={closeProjectModal}
+          role="presentation"
+        >
+          <div
+            className="project-modal"
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+          >
+            <button
+              type="button"
+              className="project-modal__close"
+              onClick={closeProjectModal}
+              aria-label="Close project modal"
+            >
+              <FaTimes />
+            </button>
+
+            <div className="project-modal__image-wrap">
+              <img
+                src={selectedProject.modalImage}
+                alt={`${selectedProject.title} example`}
+                className="project-modal__image"
+              />
+            </div>
+
+            <div className="project-modal__footer">
+              <h3 id="project-modal-title" className="project-modal__title">
+                {selectedProject.title}
+              </h3>
+              <p className="project-modal__description">
+                {selectedProject.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
