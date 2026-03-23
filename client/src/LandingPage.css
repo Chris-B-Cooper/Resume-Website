@@ -640,11 +640,11 @@ button.contact-socials__link {
 }
 
 .contact-section__inner {
-  position: relative; /* REQUIRED for popup positioning */
+  position: relative; 
 }
 
 .contact-popup {
-  top: 85%; /* lower than home version */
+  top: 85%; 
 }
 
 /* ========================= */
