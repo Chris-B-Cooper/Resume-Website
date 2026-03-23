@@ -21,28 +21,28 @@ function LandingPage() {
       image: smartStockImg,
       modalImage: smartStockExampleImg,
       description:
-        'A full-stack inventory management application built to streamline product tracking, stock visibility, and organization across items and categories. It focuses on clean data flow, responsive UI design, and practical CRUD workflows that make inventory updates fast and intuitive.'
+        'Smart Stock is a full-stack inventory management system that automates item tracking using barcode and receipt scanning with OCR to extract product data and expiration dates. It maintains a structured inventory with real-time updates, categorization, and expiration monitoring. An AI-powered recipe generator suggests meals based on available ingredients. The project emphasizes efficient state management, clean data flow, and a responsive UI for seamless user interaction.'
     },
     {
       title: 'Trade Wizard',
       image: tradeWizardImg,
       modalImage: tradeWizardImg,
       description:
-        'A data-driven stock analytics application designed to surface market insights through clean visualizations and structured financial data. Built with a focus on usability and performance, it helps users explore trends, compare metrics, and interact with market data in a more accessible way.'
+        'Trade Wizard is a fantasy football trade analyzer that evaluates proposed trades and assigns a grade to each side based on player value and projected performance. It processes player data, compares positional impact, and generates balanced trade insights using structured scoring logic. The system focuses on clean data handling, efficient computation, and intuitive UI feedback, allowing users to quickly assess trade fairness and make more informed decisions.'
     },
     {
       title: 'Vault Runner',
       image: vaultRunnerImg,
       modalImage: vaultRunnerExampleImg,
       description:
-        'A 2D platformer developed in Unity where players navigate multiple levels, use different tools to overcome obstacles, and collect gems for score. The project focused on gameplay systems, level flow, player interaction mechanics, and building a smooth moment-to-moment experience.'
+        'Vault Runner is a 2D platformer built in Unity featuring multiple levels where players use tools and movement mechanics to overcome obstacles and collect gems. The project includes physics-based interactions, collision systems, and responsive input handling. It also incorporates AI-driven NPC behavior for dynamic interactions within levels. Emphasis was placed on level design, gameplay systems, and maintaining smooth performance across scenes.'
     },
     {
       title: 'White Elephant',
       image: whiteElephantImg,
       modalImage: whiteElephantImg,
       description:
-        'A web application built to automate and visualize the flow of a White Elephant gift exchange. It handles participant generation, tracks gift ownership, keeps unrevealed presents hidden, and supports a steal system to make the experience feel closer to the real game while keeping everything organized.'
+        'White Elephant is a web application that simulates a digital gift exchange with automated participant management and real-time game state tracking. It includes hidden gift logic, controlled reveal mechanics, and a structured steal system to replicate real gameplay rules. A visualization layer displays participants and available gifts, ensuring clarity and engagement while emphasizing state synchronization and interactive UI design.'
     }
   ];
 
