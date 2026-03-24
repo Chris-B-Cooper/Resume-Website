@@ -1,16 +1,19 @@
-/* Reset box model */
+/* ========================= */
+/* Global Reset */
+/* ========================= */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Smooth scroll between sections */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Remove default margins and prevent horizontal overflow */
+/* Remove default spacing and prevent overflow */
 html,
 body,
 #root {
@@ -25,16 +28,24 @@ body {
   overflow-x: hidden;
 }
 
-/* Global body styles */
+/* ========================= */
+/* Base Styles */
+/* ========================= */
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #ffffff;
   color: #e5e7eb;
+
+  /* Better font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Media defaults */
+/* ========================= */
+/* Media Defaults */
+/* ========================= */
+
 img,
 picture,
 video,
@@ -44,7 +55,10 @@ svg {
   max-width: 100%;
 }
 
-/* Form elements inherit font */
+/* ========================= */
+/* Form Elements */
+/* ========================= */
+
 input,
 button,
 textarea,
@@ -52,13 +66,19 @@ select {
   font: inherit;
 }
 
-/* Global link styles */
+/* ========================= */
+/* Links */
+/* ========================= */
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Better text wrapping */
+/* ========================= */
+/* Typography */
+/* ========================= */
+
 p,
 h1,
 h2,
