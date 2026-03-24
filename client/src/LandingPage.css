@@ -61,13 +61,16 @@ a {
 /* Page wrapper */
 .page {
   min-height: 100vh;
+  padding-top: var(--header-height);
 }
 
 /* Sticky Header */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   height: var(--header-height);
   backdrop-filter: blur(10px);
   background: #666a61;
