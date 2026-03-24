@@ -1,5 +1,3 @@
-
-
 /* Reset box model */
 *,
 *::before,
@@ -12,25 +10,63 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Remove default margins */
+/* Remove default margins and prevent horizontal overflow */
 html,
-body {
+body,
+#root {
   margin: 0;
   padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 /* Global body styles */
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  background: #ffffff; 
-  color: #e5e7eb; 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #ffffff;
+  color: #e5e7eb;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form elements inherit font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 /* Global link styles */
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Better text wrapping */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
 
